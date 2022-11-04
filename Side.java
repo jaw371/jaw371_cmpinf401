@@ -1,27 +1,15 @@
-package jaw371_MenuManager;
-
-/**
- * Class Side
- * author: Jacob Wright
- * Created 10/10/2022
- */
-
-/**
- * creation of the Side class
- * create String name, String description, and int number of calories
- * set the side's name, description, and nCal by using "this." to refer to the side object
- * get the side's name, description, and nCal by returning the value
- */
+package jaw371_MenuManager_v2;
 
 class Side {
-	String name;
-	String description;
-	int nCal;
-	public Side(String name, String description, int nCal) {
+	private String name = null;
+	private String description = null;
+	private int nCal = 0;
+	public Side(String name, String description, int nCal, int i) {
 		this.name = name;
 		this.description = description;
 		this.nCal = nCal;
 	}
+
 	public String getsideName() {
 		return this.name;
 	}
@@ -42,5 +30,3 @@ class Side {
 	}
 
 }
-
-

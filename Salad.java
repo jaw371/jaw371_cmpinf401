@@ -1,23 +1,15 @@
-package jaw371_MenuManager;
-
 /**
  * Class Salad
- * author: Jacob Wright
- * Created 10/10/2022
+ * Jacob Wright
+ * Created: 11/4/2022
  */
-
-/**
- * creation of the Salad class
- * create String name, String description, and int number of calories
- * set the salad's name, description, and nCal by using "this." to refer to the salad object
- * get the salad's name, description, and nCal by returning the value
- */
+package jaw371_MenuManager_v2;
 
 class Salad {
-	String name;
-	String description;
-	int nCal;
-	public Salad(String name, String description, int nCal) {
+	private String name = null;
+	private String description = null;
+	private int nCal = 0;
+	public Salad(String name, String description, int nCal, int i) {
 		this.name = name;
 		this.description = description;
 		this.nCal = nCal;
@@ -42,4 +34,3 @@ class Salad {
 	}
 
 }
-

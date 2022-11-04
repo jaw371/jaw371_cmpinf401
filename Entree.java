@@ -1,23 +1,14 @@
-package jaw371_MenuManager;
-
-
 /**
  * Class Entree
- * author: Jacob Wright
- * Created 10/10/2022
+ * Jacob Wright
+ * Created: 11/4/2022
  */
+package jaw371_MenuManager_v2;
 
-
-/**
- * creation of the Entree class
- * create String name, String description, and int number of calories
- * set the entree's name, description, and nCal by using "this." to refer to the entree object
- * get the entree's name, description, and nCal by returning the value
- */
 class Entree {
-	String name;
-	String description;
-	int nCal;
+	private String name = null;
+	private String description = null;
+	private int nCal = 0;
 	public Entree(String name, String description, int nCal) {
 		this.name = name;
 		this.description = description;
@@ -34,15 +25,12 @@ class Entree {
 	}
 	public void setEntreeName(String name) {
 		this.name = name;
-	}
+		}
 	public void setEntreeDesc(String description) {
 		this.description = description;
-	}
+		}
 	public void setEntreeCals(int nCal) {
 		this.nCal = nCal;
+		}
+
 	}
-
-}
-
-
-

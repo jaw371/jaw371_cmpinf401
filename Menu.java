@@ -1,30 +1,33 @@
-package jaw371_MenuManager;
-
 /**
  * Class Menu
- * author: Jacob Wright
- * Created 10/10/2022
+ * Jacob Wright
+ * Created: 11/4/2022
  */
 
-/**
- * Menu class is created to contain one object of each of the previous classes
- *
- */
+package jaw371_MenuManager_v2;
 
-public class Menu{
+public class Menu {
 	String name;
 	Entree entree;
 	Side side;
 	Salad salad;
 	Dessert dessert;
-	public Menu(String name, Entree entree, Salad salad) {
+	
+	public Menu (String name, Entree entree1, Salad salad1) {
+		this.name = name;
+		this.entree = new Entree();
+		this.side = new Side();
+		this.salad = new Salad();
+		this.dessert = new Dessert();
+	}
+	public Menu(String name, Entree entree, Side side) {
 		this.name = name;
 		this.entree = entree;
-		this.side = null;
-		this.salad = salad;
+		this.side = side;
+		this.salad = null;
 		this.dessert = null;
 	}
-	public Menu(String name, Side side, Salad salad) {
+	public Menu(String name) {
 		this.name = name;
 		this.entree = null;
 		this.side = side;
@@ -43,21 +46,21 @@ public class Menu{
 	 * if the item does not equal null, get number of calories from the item, and add it to the 0 value of totalCals
 	 * at the end return the new value of totalCals
 	 */
-	public int totalCals() {
-		int totalCals = 0;
+	public int totalCalories() {
+		int totalCalories = 0;
 		if(this.entree!=null) {
-			totalCals += this.entree.getentreeCals();
+			totalCalories += this.entree.getentreeCals();
 		}
 		if(this.side!=null) {
-			totalCals += this.side.getsideCals();
+			totalCalories += this.side.getsideCals();
 		}
 		if(this.salad!=null) {
-			totalCals += this.salad.getsaladCals();
+			totalCalories += this.salad.getsaladCals();
 		}
 		if(this.dessert!=null) {
-			totalCals += this.dessert.getdessertCals();
+			totalCalories += this.dessert.getdessertCals();
 		}
-		return totalCals;
+		return totalCalories;
 	}
 	/**
 	 * description method is created to concatenate parts of the menu in order
@@ -107,4 +110,38 @@ public class Menu{
 		description+="\n";
 		return description;
 	}
-}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Entree getEntree() {
+		return entree;
+	}
+	public void setEntree(Entree entree) {
+		this.entree = entree;
+	}
+	public Side getSide() {
+		return side;
+	}
+	public void setSide(Side side) {
+		this.side = side;
+	}
+	public Salad getSalad() {
+		return salad;
+	}
+	public void setSalad(Salad salad) {
+	this.salad = salad;
+	}
+	public Dessert getDessert() {
+		return dessert;
+	}
+	public void setDessert(Dessert dessert) {
+		this.dessert = dessert;
+	}
+
+	}
+	
+
+
