@@ -1,32 +1,13 @@
-package jaw371_MenuManager_v2;
+/**Class Side
+* Jacob Wright
+* Created: 11/4/2022
+*/
+package jaw371_MenuManager_v3;
 
-class Side {
-	private String name = null;
-	private String description = null;
-	private int nCal = 0;
-	public Side(String name, String description, int nCal, int i) {
-		this.name = name;
-		this.description = description;
-		this.nCal = nCal;
-	}
+public class Side extends MenuItem {
 
-	public String getsideName() {
-		return this.name;
-	}
-	public String getsideDesc() {
-		return this.description;
-	}
-	public int getsideCals() {
-		return this.nCal;
-	}
-	public void setSideName(String name) {
-		this.name = name;
-	}
-	public void setSideDesc(String description) {
-		this.description = description;
-	}
-	public void setSideCals(int nCal) {
-		this.nCal = nCal;
-	}
+	public Side(String name, String desc, int cal, double price) {
 
+		super(name, desc, cal, price);
+	}
 }

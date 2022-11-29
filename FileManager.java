@@ -1,115 +1,85 @@
+
 /**
  * Class FileManager
  * Jacob Wright
  * Created: 11/4/2022
  */
-package jaw371_MenuManager_v2;
+package jaw371_MenuManager_v3;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 class FileManager {
-	final static String SPLIT = "@@";
-/**
- * Method create ArrayList
- * @param fileName
- * @return entrees
- */
-	public static ArrayList<Entree>readEntrees(String fileName) {
-		ArrayList<Entree>entrees = new ArrayList<Entree>();
-		int arrayIndex = 0;
+
+	/**
+	 * Method create ArrayList and FileReader
+	 * 
+	 * @param fileName
+	 * @return menu items
+	 */
+	public static ArrayList<MenuItem> readItems(String fileName) {
+		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+
+		String empty = null;
+
 		try {
 			FileReader fr = new FileReader(fileName);
 			BufferedReader br = new BufferedReader(fr);
-			String line = null;
-			while((line = br.readLine())!=null) {
-				int first = line.indexOf(SPLIT);
-				int second = line.indexOf(SPLIT,first + 1);
-				entrees.add(arrayIndex,new Entree(line.substring(0,first),line.substring(first+2,second),Integer.parseInt(line.substring(second+2))));
-				arrayIndex++;
+			while ((empty = br.readLine()) != null) {
+				list.add(empty);
+			}
+			for (String line : list) {
+				String[] res = line.split("@@");
+
+				if (res[1].equals("dessert")) {
+					Dessert d = new Dessert(res[0], res[2], Integer.valueOf(res[3]), Double.valueOf(res[4]));
+					menuItems.add(d);
+				} else if (res[1].equals("entree")) {
+					Entree e = new Entree(res[0], res[2], Integer.valueOf(res[3]), Double.valueOf(res[4]));
+					menuItems.add(e);
+				} else if (res[1].equals("salad")) {
+					Salad sa = new Salad(res[0], res[2], Integer.valueOf(res[3]), Double.valueOf(res[4]));
+					menuItems.add(sa);
+				} else if (res[1].equals("side")) {
+					Side si = new Side(res[0], res[2], Integer.valueOf(res[3]), Double.valueOf(res[4]));
+					menuItems.add(si);
+				}
 			}
 			br.close();
 			fr.close();
-		} catch(Exception e) {
+		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		return entrees;
+		return menuItems;
 	}
+
 	/**
-	 * Method create ArrayList
-	 * @param fileName
-	 * @return sides
+	 * Method create FileWriter
+	 * 
+	 * @param fileName and fw
+	 * @return what was written to the file
 	 */
-	public static ArrayList<Side>readSides(String fileName) {
-		ArrayList<Side>sides = new ArrayList<Side>();
-		int arrayIndex = 0;
+	public static void writeMenus(String fileName, ArrayList<Menu> menus) {
 		try {
-			FileReader fr = new FileReader(fileName);
-			BufferedReader br = new BufferedReader(fr);
-			String line = null;
-			while((line = br.readLine())!=null) {
-				int first = line.indexOf(SPLIT);
-				int second = line.indexOf(SPLIT,first + 1);
-				sides.add(arrayIndex,new Side(line.substring(0,first),line.substring(first+2,second),Integer.parseInt(line.substring(second+2)),0));
-				arrayIndex++;
+			FileWriter fw = new FileWriter(fileName);
+			BufferedWriter bw = new BufferedWriter(fw);
+
+			for (int i = 0; i < menus.size(); i++) {
+				bw.write(menus.get(i).description() + "\n" + "Total calories: " + menus.get(i).totalCalories() + "\n"
+						+ "Total price: " + menus.get(i).totalPrice() + "\n");
+				bw.newLine();
 			}
-			br.close();
-			fr.close();
-		} catch(Exception e) {
+
+			bw.close();
+			fw.close();
+		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		return sides;
-}
-	/**
-	 * Method create ArrayList
-	 * @param fileName
-	 * @return salads
-	 */
-	public static ArrayList<Salad>readSalads(String fileName) {
-		ArrayList<Salad>salads = new ArrayList<Salad>();
-		int arrayIndex = 0;
-		try {
-			FileReader fr = new FileReader(fileName);
-			BufferedReader br = new BufferedReader(fr);
-			String line = null;
-			while((line = br.readLine())!=null) {
-				int first = line.indexOf(SPLIT);
-				int second = line.indexOf(SPLIT,first + 1);
-				salads.add(arrayIndex,new Salad(line.substring(0,first),line.substring(first+2,second),Integer.parseInt(line.substring(second+2)),0));
-				arrayIndex++;
-			}
-			br.close();
-			fr.close();
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return salads;
 	}
-	/**
-	 * Method create ArrayList
-	 * @param fileName
-	 * @return desserts
-	 */
-	
-	public static ArrayList<Dessert>readDesserts(String fileName) {
-		ArrayList<Dessert>desserts = new ArrayList<Dessert>();
-		int arrayIndex = 0;
-		try {
-			FileReader fr = new FileReader(fileName);
-			BufferedReader br = new BufferedReader(fr);
-			String line = null;
-			while((line = br.readLine())!=null) {
-				int first = line.indexOf(SPLIT);
-				int second = line.indexOf(SPLIT,first + 1);
-				desserts.add(arrayIndex,new Dessert(line.substring(0,first),line.substring(first+2,second),Integer.parseInt(line.substring(second+2)),0));
-				arrayIndex++;
-			}
-			br.close();
-			fr.close();
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return desserts;
-}
+
 }
