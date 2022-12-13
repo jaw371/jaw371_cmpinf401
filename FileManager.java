@@ -1,10 +1,9 @@
-
 /**
  * Class FileManager
  * Jacob Wright
  * Created: 11/4/2022
  */
-package jaw371_MenuManager_v3;
+package jaw371_FinalProject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

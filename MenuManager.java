@@ -3,7 +3,7 @@
  * Jacob Wright
  * Created: 11/24/2022
  */
-package jaw371_MenuManager_v3;
+package jaw371_FinalProject;
 
 import java.util.ArrayList;
 

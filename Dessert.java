@@ -2,7 +2,7 @@
 * Jacob Wright
 * Created: 11/4/2022
 */
-package jaw371_MenuManager_v3;
+package jaw371_FinalProject;
 
 public class Dessert extends MenuItem {
 
